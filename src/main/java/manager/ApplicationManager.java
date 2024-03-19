@@ -9,6 +9,7 @@ public class ApplicationManager {
 
    WebDriver wd;
    HelperUser helperUser;
+   HelperBoards helperBoards;
 
     public void init() {
         wd = new ChromeDriver();
@@ -16,6 +17,7 @@ public class ApplicationManager {
         wd.navigate().to("https://trello.com/");
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        helperBoards = new HelperBoards(wd);
     }
 
     public void stop() {
@@ -24,5 +26,9 @@ public class ApplicationManager {
 
     public HelperUser getHelperUser() {
         return helperUser;
+    }
+
+    public HelperBoards getHelperBoards() {
+        return helperBoards;
     }
 }
